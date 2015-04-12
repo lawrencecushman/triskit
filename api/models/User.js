@@ -11,6 +11,7 @@ module.exports = {
         twitter_id: 'string',
         username: 'string',
         access_token: 'string',
-        access_token_secret: 'string'
+        access_token_secret: 'string',
+        tags: 'json'
     }
 };

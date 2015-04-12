@@ -8,6 +8,37 @@
 var rToken;
 var rSecret;
 
+grabPosts = function(options, res) {
+    //var items = req.params.all();
+    //console.log(items);
+    User.findOne({
+        twitter_id: options.twitter_id
+    }, function(err, user) {
+        console.log("USER " + JSON.stringify(user));
+        sails.config.oauth_stuff.twitter.getTimeline("home_timeline", {},
+            user.access_token,
+            user.access_token_secret,
+            function(error, data, response) {
+                var masterList = [];
+                if (error) {
+                    console.log("Get Fucked " + error);
+                } else {
+
+                    for (var i = 0; i < data.length; i++) {
+                        var tweet = data[i]["text"];
+                        masterList.push(tweet);
+                    }
+                    IndicoStuff.batchProcess({
+                        masterList: masterList,
+                        twitter_id: options.twitter_id
+                    });
+
+                }
+            });
+    });
+    return res.send('success');
+}
+
 module.exports = {
 
     signin: function(req, res) {
@@ -72,13 +103,51 @@ module.exports = {
                         if (error) {
                             console.log('Error verifying credentials:', error);
                         } else {
-                            res.status(200).send();
+                            return grabPosts({
+                                twitter_id: results.user_id
+                            }, res);
+                            //res.status(200).send("SUCCESS!");
                             //res.redirect('/user/profile');
                         }
                     });
                 }
             });
     },
+
+    // grabPosts: function(req, res) {
+    //     //console.log("REQ " + req.params.twitter_id);
+    //     var items = req.params.all();
+    //     console.log(items);
+    //     User.findOne({
+    //         twitter_id: items.twitter_id
+    //     }, function(err, user) {
+    //         console.log("USER " + JSON.stringify(user));
+    //         sails.config.oauth_stuff.twitter.getTimeline("home_timeline", {
+
+    //             },
+    //             user.access_token,
+    //             user.access_token_secret,
+    //             function(error, data, response) {
+    //                 var masterList = [];
+    //                 if (error) {
+    //                     console.log("Get Fucked " + error);
+    //                 } else {
+
+    //                     for (var i = 0; i < data.length; i++) {
+    //                         var tweet = data[i]["text"];
+    //                         masterList.push(tweet);
+    //                     }
+    //                     IndicoStuff.batchProcess({
+    //                         masterList: masterList,
+    //                         twitter_id: items.twitter_id
+    //                     });
+
+    //                 }
+    //             });
+    //     });
+    //     return res.send('success');
+
+    // },
 
     profile: function(req, res) {
         return res.view();

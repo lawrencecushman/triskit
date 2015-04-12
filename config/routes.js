@@ -31,7 +31,8 @@ module.exports.routes = {
         view: 'homepage'
     },
 
-    'GET /user/signin': 'UserController.signIn',
+    'GET /user/signin': 'UserController.signin',
+    'GET /gettweets': 'UserController.grabPosts',
 
 
     // Custom routes here...
