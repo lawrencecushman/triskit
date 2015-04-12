@@ -1,0 +1,8 @@
+<div>
+  <p>(<a href="/">Homepage</a> | <b>My Profile</b>)</p>
+  <% if (req.session.user && req.session.user.twitterScreenName) { // Lazy JS evaluation :^) %>
+  Hello <%= req.session.user.twitterScreenName %>!
+  <% } else { %>
+    You are not logged in.
+  <% } %>
+</div>

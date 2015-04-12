@@ -9,83 +9,61 @@
  * and auto-save to `req.session` with Socket.io the same way you would with Express.
  *
  * For more information on configuring the session, check out:
- * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.session.html
+ * http://links.sailsjs.org/docs/config/session
  */
 
 module.exports.session = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Session secret is automatically generated when your new app is created   *
-  * Replace at your own risk in production-- you will invalidate the cookies *
-  * of your users, forcing them to log in again.                             *
-  *                                                                          *
-  ***************************************************************************/
-  secret: 'c651d8b8f3728c556981ffbed5ea69b1',
+    // Session secret is automatically generated when your new app is created
+    // Replace at your own risk in production-- you will invalidate the cookies of your users,
+    // forcing them to log in again.
+    secret: '1458cf58e887bfbfea1411ffcbc4a947',
 
 
-  /***************************************************************************
-  *                                                                          *
-  * Set the session cookie expire time The maxAge is set by milliseconds,    *
-  * the example below is for 24 hours                                        *
-  *                                                                          *
-  ***************************************************************************/
-
-  // cookie: {
-  //   maxAge: 24 * 60 * 60 * 1000
-  // }
-
-  /***************************************************************************
-  *                                                                          *
-  * In production, uncomment the following lines to set up a shared redis    *
-  * session store that can be shared across multiple Sails.js servers        *
-  ***************************************************************************/
-
-  // adapter: 'redis',
-
-  /***************************************************************************
-  *                                                                          *
-  * The following values are optional, if no options are set a redis         *
-  * instance running on localhost is expected. Read more about options at:   *
-  * https://github.com/visionmedia/connect-redis                             *
-  *                                                                          *
-  *                                                                          *
-  ***************************************************************************/
-
-  // host: 'localhost',
-  // port: 6379,
-  // ttl: <redis session TTL in seconds>,
-  // db: 0,
-  // pass: <redis auth password>
-  // prefix: 'sess:'
+    // Set the session cookie expire time
+    // The maxAge is set by milliseconds, the example below is for 24 hours
+    //
+    // cookie: {
+    //   maxAge: 24 * 60 * 60 * 1000
+    // }
 
 
-  /***************************************************************************
-  *                                                                          *
-  * Uncomment the following lines to use your Mongo adapter as a session     *
-  * store                                                                    *
-  *                                                                          *
-  ***************************************************************************/
+    // In production, uncomment the following lines to set up a shared redis session store
+    // that can be shared across multiple Sails.js servers
+    // adapter: 'redis',
+    //
+    // The following values are optional, if no options are set a redis instance running
+    // on localhost is expected.
+    // Read more about options at: https://github.com/visionmedia/connect-redis
+    //
+    // host: 'localhost',
+    // port: 6379,
+    // ttl: <redis session TTL in seconds>,
+    // db: 0,
+    // pass: <redis auth password>
+    // prefix: 'sess:'
 
-  // adapter: 'mongo',
-  // host: 'localhost',
-  // port: 27017,
-  // db: 'sails',
-  // collection: 'sessions',
+    // adapter: 'mongo',
 
-  /***************************************************************************
-  *                                                                          *
-  * Optional Values:                                                         *
-  *                                                                          *
-  * # Note: url will override other connection settings url:                 *
-  * 'mongodb://user:pass@host:port/database/collection',                     *
-  *                                                                          *
-  ***************************************************************************/
-
-  // username: '',
-  // password: '',
-  // auto_reconnect: false,
-  // ssl: false,
-  // stringify: true
+    // host: 'localhost',
+    // port: 27017,
+    // db: 'trisk',
+    // collection: 'sessions',
+    //
+    // host: 'localhost',
+    // port: 27017,
+    // db: 'sails',
+    // collection: 'sessions',
+    //
+    // Optional Values:
+    //
+    // # Note: url will override other connection settings
+    // url: 'mongodb://user:pass@host:port/database/collection',
+    //
+    // username: '',
+    // password: '',
+    // auto_reconnect: false,
+    // ssl: false,
+    // stringify: true
 
 };
